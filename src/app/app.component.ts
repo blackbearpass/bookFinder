@@ -9,10 +9,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class AppComponent {
   title = 'bring-me-some-coconuts';
-
+  returnedData : any[] = [];
+  returnedTitle: any;
+  returnedSubTitle: any;
+  returnedAuthor: any;
+  returnedBookVolumeInfo: any;
   // Tools Required props
 bookSearchStrings: FormGroup = new FormGroup({
   'bookTitle' : new FormControl(null),
+  'bookAuthor' : new FormControl(null)
 });
 
   constructor (private googleBookService: GoogleBookService, private _formBuilder: FormBuilder){}
@@ -22,10 +27,21 @@ bookSearchStrings: FormGroup = new FormGroup({
 
 
 
-  async findBookByTitle(){
-    this.googleBookService.getBooks(this.bookSearchStrings.value.bookTitle).subscribe((value) => {
-      console.log(`Result: ` + JSON.stringify(value));
-    });
+  findBookByTitle(){
+    if (this.bookSearchStrings.value.bookTitle){
 
+    this.googleBookService.getBooks(this.bookSearchStrings.value.bookTitle, this.bookSearchStrings.value.bookAuthor).subscribe(data => {
+      this.returnedData = data.items;
+      // console.log("raw data", data, "object data", this.returnedData);
+      this.returnedData.forEach(element => {
+        let today = new Date();
+        console.log(element, "sub element");
+        
+        
+      });
+    })
+  };
+
+  
   }
 }

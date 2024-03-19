@@ -18,14 +18,21 @@ canvas {
 
   .example-card {
     min-width: 100%;
+    max-width: 50px;
     margin: 40px;
 
+}
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 .cards {
     width: 400px;
 }
 
 .example-form {
+  background-color: red;
   min-width: 150px;
   max-width: 500px;
   width: 100%;
@@ -95,4 +102,128 @@ section {
 .spinner__loading {
   display: flex;
   justify-content: center;
+}
+.ex-container{
+  text-align: left;
+}
+
+.form-container{
+  width: 400px; 
+  background-color: #ee90d6;
+  margin: 0px auto; 
+  margin-top: 200px
+}
+.mat-card{
+  padding:0 ;
+  background-color: aqua;
+}
+.form-field{
+  display: block
+}
+
+.highlightTrackIn{
+  background: #fffecb; 
+}
+.highlightTrackOut{
+  background: #90EE90; 
+}
+.highlight{
+  background: #ee90d6; 
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-card {
+  min-width: 100%;
+  margin: 40px;
+
+}
+.cards {
+  
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  // align-items:;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-form {
+min-width: 150px;
+max-width: 500px;
+width: 100%;
+}
+
+.example-full-width {
+width: 100%;
+}
+
+td {
+padding-right: 8px;
+}
+
+
+section {
+display: table;
+}
+
+.example-label {
+display: table-cell;
+font-size: 14px;
+margin-left: 8px;
+min-width: 120px;
+}
+
+.example-button-row {
+display: table-cell;
+max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+}
+
+.example-button-container {
+display: flex;
+justify-content: center;
+width: 120px;
+}
+.mat-stepper-vertical {
+margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+margin-top: 16px;
+}
+
+.mat-select-panel {
+background: red;
+
+}
+::ng-deep .mat-select-panel {
+max-height: none !important;
+}
+
+
+::ng-deep .mat-select-panel {
+max-height: 400px!important;
+}
+
+.spinner__loading {
+display: flex;
+justify-content: center;
 }
