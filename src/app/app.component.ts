@@ -24,11 +24,13 @@ bookSearchStrings: FormGroup = new FormGroup({
   ngOnInit(){
   }
 
-
+reset(){
+  this.bookSearchStrings.reset();
+}
 
 
   findBookByTitle(){
-    if (this.bookSearchStrings.value.bookTitle){
+  
 
     this.googleBookService.getBooks(this.bookSearchStrings.value.bookTitle, this.bookSearchStrings.value.bookAuthor).subscribe(data => {
       this.returnedData = data.items;
@@ -40,7 +42,6 @@ bookSearchStrings: FormGroup = new FormGroup({
         
       });
     })
-  };
 
   
   }
