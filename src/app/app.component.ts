@@ -24,10 +24,9 @@ bookSearchStrings: FormGroup = new FormGroup({
   ngOnInit(){
   }
 
-reset(){
-  this.bookSearchStrings.reset();
-}
-
+  reset(){
+    this.bookSearchStrings.reset();
+  }
 
   findBookByTitle(){
   

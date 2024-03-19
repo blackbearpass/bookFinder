@@ -16,7 +16,7 @@ canvas {
     flex: 1 1 auto;
   }
 
-  .example-card {
+.example-card {
     min-width: 100%;
     max-width: 50px;
     margin: 40px;
@@ -26,9 +26,12 @@ canvas {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  color: #ffffff;
+  margin-bottom: 20px;
 }
 .cards {
     width: 400px;
+    
 }
 
 .example-form {
@@ -105,10 +108,18 @@ section {
 }
 .ex-container{
   text-align: left;
+  height: 400px;
+  
+
+}
+
+.mat-card-header{
+  background-color:#69F0AE ;
+  padding:5px ;
 }
 
 .form-container{
-  width: 400px; 
+  width: 600px; 
   background-color: #ee90d6;
   margin: 0px auto; 
   margin-top: 200px
@@ -120,7 +131,25 @@ section {
 .form-field{
   display: block
 }
+.mat-divider {
+  border-top-color: #1A73E8 ;
+  border-width: 2px;
+}
 
+.filters {
+  // margin-left:75%;
+  float: inline-end;
+  mat-form-field {
+      div.mat-form-field-flex {
+          align-items: flex-end;
+          margin-left: 12px;
+      }
+
+      div.mat-form-field-prefix {
+          padding-right: 12px !important;
+      }
+  }
+}
 .highlightTrackIn{
   background: #fffecb; 
 }

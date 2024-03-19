@@ -1,98 +1,133 @@
-<mat-toolbar color='accent'>
-  <mat-icon matPrefix>
-    <span class="material-symbols-sharp">
-      local_library
-    </span>
-  </mat-icon>
-  
-  <span style="margin-left: 24px;">Book Finder</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
-<div class="ex-container">
-  <div class="form-container">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Explore New Book Options</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <form [formGroup]="bookSearchStrings" >
-          <mat-form-field class="example-full-width">
-            <mat-icon matPrefix>
-              <span class="material-symbols-sharp">
-                title
-              </span>
-            </mat-icon>
-            <mat-label>Book Title</mat-label>
-            <input matInput formControlName="bookTitle">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-icon matPrefix>
-              <span class="material-symbols-sharp">
-                person_edit
-              </span>
-            </mat-icon>
-            <mat-label>Book Author</mat-label>
-            <input matInput formControlName="bookAuthor">
-          </mat-form-field>
-          <button mat-raised-button color="basic" (click)="findBookByTitle()" style="width: 200px;">
+<p>
+  <mat-toolbar style="color:#1A73E8; box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f; min-height: 100px; padding:24px">
+    <mat-icon matPrefix>
+      <span class="material-symbols-sharp">
+        library_books
+      </span>
+    </mat-icon>
+    
+      <span class="example-spacer" >Book Finder Friend (BFF)</span>
+      <!-- <div class="filters"> -->
+      <ng-container [formGroup]="bookSearchStrings" >
+        <mat-form-field>
+          <mat-icon matPrefix>
+            <span class="material-symbols-sharp">
+              title
+            </span>
+          </mat-icon>
+          <mat-label>Book Title</mat-label>
+          <input matInput formControlName="bookTitle">
+        </mat-form-field>
+        <mat-form-field  style="padding: 12px;">
+          <mat-icon matPrefix>
+            <span class="material-symbols-sharp">
+              person_edit
+            </span>
+          </mat-icon>
+          <mat-label>Book Author</mat-label>
+          <input matInput formControlName="bookAuthor">
+        </mat-form-field>
+        <button  style="margin: 8px; min-width: 100px;" mat-raised-button color="" (click)="findBookByTitle()" >
+          <mat-icon>
+          <span class="material-symbols-sharp">
+            travel_explore
+            </span>
+          </mat-icon>
             Search
-          </button>
-          <button mat-raised-button color="basic" (click)="reset()" style="width: 200px;">
-            Reset
-          </button>
-        </form>
-      </mat-card-content>
-    </mat-card>
-    <mat-divider></mat-divider>
-  </div>
-</div>
+        </button>
 
-  <br>
-  <div class="card-wrapper">
-  <!-- <div class="cards" > -->
-       
-      <div fxLayout="row" fxLayoutGap="10" class="example-card" *ngFor="let item of returnedData">
-        <div>
-          <mat-card *ngIf="item.volumeInfo.title && item.volumeInfo.publisher" style="max-width: 1080px;" >
-            
-            <mat-card-header>
-              <mat-card-title>{{item.volumeInfo.title }}</mat-card-title>
-            </mat-card-header>
+        <button style="margin: 8px; min-width: 100px;" mat-raised-button color="warn" (click)="reset()" >
+          <mat-icon>
+            <span class="material-symbols-sharp">
+              restart_alt
+              </span>
+          </mat-icon>
+          Reset  
+        </button>
+      </ng-container>
+  </mat-toolbar>
+</p>
+<div class="card-wrapper">
+    <div fxLayout="row" fxLayoutGap="10" class="example-card" *ngFor="let item of returnedData">
+      <div>
+        <mat-card  *ngIf="item.volumeInfo.title" style="max-width: 900px;" >
+          <mat-card-header style=" color:white">
+            <mat-card-title>{{item.volumeInfo.title }}</mat-card-title>
+          </mat-card-header>
+          <mat-divider style=" border-top-color: #424242 ;"></mat-divider>
+          <ng-container  style="background-color:#1A73E8 " *ngIf="item.volumeInfo.imageLinks">
             <img mat-card-image src="{{item.volumeInfo.imageLinks.thumbnail}}">
-            <mat-divider></mat-divider>
-            <br>
-            <mat-card-content>
-              <!-- <div *ngIf="item.volumeInfo.title.Author"> AUTHOR: {{item.volumeInfo.title.Author}}</div> -->
-              <div *ngIf="item.volumeInfo.authors">
-                  <mat-card-subtitle>Author(s)
-                    
-                  </mat-card-subtitle>
-                <div *ngFor="let sub of item.volumeInfo.authors ">
-                  <span> {{sub}}</span>
-                </div>
-              </div>
+          </ng-container>
+          <ng-container *ngIf="!item.volumeInfo.imageLinks">
+            <img #placeholder mat-card-image src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Google_Play_Books_icon_%282016%29.svg" >
+          </ng-container>
+          <mat-divider></mat-divider>
+          <br>
+          <mat-card-content>
+            <ng-container *ngIf="item.volumeInfo.authors">
+                <mat-card-subtitle>
+                  Author(s)
+                </mat-card-subtitle>
+              <ng-container *ngFor="let sub of item.volumeInfo.authors ">
+                  {{sub}}
+              </ng-container>
+              <br>
+            </ng-container>
+            
+            <ng-container *ngIf="item.volumeInfo.categories">
+              <mat-card-subtitle>
+                Categories
+              </mat-card-subtitle>
+              <ng-container *ngFor="let sub of item.volumeInfo.categories ">
+                <span> {{sub}}</span>
+              </ng-container>
+              <br>
+            </ng-container>
+            
+            <ng-container *ngIf="item.volumeInfo.publisher">
               <mat-card-subtitle> 
                 Publisher
               </mat-card-subtitle>
-                <span> {{item.volumeInfo.publisher}}</span>
-              <br>
+                {{item.volumeInfo.publisher}}
+            </ng-container>
+            <br>
+            <ng-container *ngIf="item.volumeInfo.infoLink">
+              <mat-card-subtitle> 
+                Go to Book
+              </mat-card-subtitle>
+              <mat-icon matPrefix class="material-symbols-sharp">
+                  shop
+              </mat-icon>
+                <a href="{{item.volumeInfo.infoLink}}" class="material-symbols-sharp">
+                  {{item.volumeInfo.infoLink}}
+                </a>
+            </ng-container>
+            <br>
+            <ng-container *ngIf="item.volumeInfo.printType">
+              <mat-card-subtitle> 
+                Print Type
+              </mat-card-subtitle>
+                {{item.volumeInfo.printType | titlecase}}
+            </ng-container>
+            <br>
+            <ng-container *ngIf="item.volumeInfo.description">
+              <mat-card-subtitle>
+                Description
+              </mat-card-subtitle>
               <mat-accordion>
                 <mat-expansion-panel>
                   <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Book Description
+                    <mat-panel-title class="mat-card-subtitle">
+                      ....
                     </mat-panel-title>
-
                   </mat-expansion-panel-header>
                   <p>{{item.volumeInfo.description}}</p>
                 </mat-expansion-panel>
               </mat-accordion>
-      
-            </mat-card-content>
-         
-          </mat-card>
-      </div>
-    <!-- </div> -->
-  </div>
+            </ng-container>
+          </mat-card-content>
+        </mat-card>
+    </div>
+</div>
  
 
