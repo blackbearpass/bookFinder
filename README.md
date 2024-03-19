@@ -1,12 +1,22 @@
-•	Description of the problem, approach, solution
-  As a reader of books I need the ability to quickly search for a new read based on ambigous types of search values.
-•	Reasoning behind your technical choices, including architectural
-  MVC Angular/TS app utilizing a little bit of a service architecture but not fully utilizing a sub-component architecture which is my typical preference for webdev.
-  Reasoning: simple to instantiate, recent experience in leveraging COTS API data and presenting it for 'non-technical' users leveraging the immense libraries of NPM. E.g. Angular Material.
-•	Trade-offs you might have made, anything you left out, or what you might do differently if you had additional time to spend on the project. 
-  Utilizing Libraries to quickly provide a descent UI with the trade off the investment in putting a larger amount of time into the front/end UI
-•	Any optional features and enhancements implemented and why
-  Type Ahead search. To help the user finish their thought based on the cascading values Title>Author>DateRange
+**Description of the problem, approach, solution**
+
+    As a reader of books I need the ability to quickly search for a new read based on ambigous types of search values.
+    
+**Reasoning behind your technical choices, including architectural**
+
+    MVC Angular/TS app utilizing a little bit of a service architecture but not fully utilizing a sub-component architecture which is my typical preference for webdev.
+    
+**Reasoning**
+
+    simple to instantiate, recent experience in leveraging COTS API data and presenting it for 'non-technical' users leveraging the immense libraries of NPM. E.g. Angular Material.
+    
+**Trade-offs you might have made, anything you left out, or what you might do differently if you had additional time to spend on the project. **
+
+    Utilizing Libraries to quickly provide a descent UI with the trade off the investment in putting a larger amount of time into the front/end UI
+
+**Any optional features and enhancements implemented and why**
+    
+    Image retrieval 
 
 
 # BringMeSomeCoconuts
